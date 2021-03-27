@@ -21,6 +21,30 @@ mongoose
   })
   .then(() => {
     // Run your code here, after you have insured that the connection was made
+    return Recipe.create({
+      title: 'White Bean Chili',
+      level: 'Easy Peasy',
+      ingredients: [
+        'White Beans',
+        'Chicken',
+        'Green Chiles',
+        'Spices',
+        'Onion',
+        'Cream Cheese'
+      ],
+      cuisine: 'American',
+      dishType: 'main_course',
+      image: 'https://www.cookingclassy.com/wp-content/uploads/2013/05/white-chicken-chili-44.jpg',
+      duration: 45,
+      creator: 'None'
+    }).then((newRecipe) => {
+    console.log(newRecipe.title)
+    }).catch((error) => {
+      console.log('An error occurred while saving the recipe!', error)
+    })
+  })
+  .then(() => {
+    return Recipe.insertMany(data);
   })
   .catch(error => {
     console.error('Error connecting to the database', error);
